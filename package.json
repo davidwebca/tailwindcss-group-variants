@@ -1,0 +1,22 @@
+{
+  "name": "tailwindcss-group-variants",
+  "version": "0.0.1",
+  "description": "Tailwind CSS plugin to add group variants",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/david-treblig/tailwindcss-group-variants.git"
+  },
+  "keywords": [
+    "tailwindcss"
+  ],
+  "author": "davidwebca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/david-treblig/tailwindcss-group-variants/issues"
+  },
+  "homepage": "https://github.com/david-treblig/tailwindcss-group-variants#readme"
+}
