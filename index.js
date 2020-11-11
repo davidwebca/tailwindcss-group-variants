@@ -23,7 +23,7 @@ module.exports = plugin(({ addVariant, config, e }) => {
   }
 
   let groupVariantsConfig = config('groupVariants')
-  groupVariants.forEach((groupVariant, groupVariantName) => {
+  groupVariantsConfig.forEach((groupVariant, groupVariantName) => {
   	addVariant(groupVariantName, createGroupVariant(...groupVariant))
   })
 })
