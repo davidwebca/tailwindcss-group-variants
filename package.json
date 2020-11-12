@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/david-treblig/tailwindcss-group-variants.git"
+    "url": "git+ssh://git@github.com/davidwebca/tailwindcss-group-variants.git"
   },
   "keywords": [
     "tailwindcss"
@@ -16,7 +16,7 @@
   "author": "davidwebca",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/david-treblig/tailwindcss-group-variants/issues"
+    "url": "https://github.com/davidwebca/tailwindcss-group-variants/issues"
   },
-  "homepage": "https://github.com/david-treblig/tailwindcss-group-variants#readme"
+  "homepage": "https://github.com/davidwebca/tailwindcss-group-variants#readme"
 }
