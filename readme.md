@@ -74,7 +74,7 @@ module.exports = {
 Generates the following:
 
 ```css
-.overlay.active .overlay-active\h-0{
+.overlay.active .overlay-active\:h-0{
   height: 0;
 }
 .accordion.open .accordion-open\:h-0{
