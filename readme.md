@@ -20,11 +20,14 @@ module.exports = {
 }
 ```
 
-## Add this to your config
+## Add the groupVariants object to your config and add a custom variant like you normally would
 
 
 ```js
 module.exports = {
+  variants: {
+    margin: ['responsive', 'group-first']
+  },
   // Add this to the root of your config file or in your "extend" portion.
   groupVariants: {
     'group-first': ['group', 'first', ':first-child'],
@@ -46,6 +49,7 @@ This will generate the following CSS:
 .group:last-child .group-last\:m-0{
   margin: 0;
 }
+/* And all the other margin utilities */
 ```
 
 By providing the third parameter and allow customizing the pseudo selector, it also allows you to create "active" classes groupings. For example, if you have overlays that receive the ".active" class or accordions that receive the ".open" class with JavaScript to make them visible.
@@ -74,4 +78,5 @@ Generates the following:
 .accordion.open .accordion-open\:m-0{
   margin: 0;
 }
+/* And all the other margin utilities */
 ```
