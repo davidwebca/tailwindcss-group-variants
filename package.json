@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/davidwebca/tailwindcss-group-variants/issues"
   },
-  "homepage": "https://github.com/davidwebca/tailwindcss-group-variants#readme"
+  "homepage": "https://github.com/davidwebca/tailwindcss-group-variants#readme",
+  "peerDependencies": {
+    "tailwindcss": "*",
+    "postcss-selector-parser": "*"
+  }
 }
