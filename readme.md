@@ -20,12 +20,16 @@ module.exports = {
 }
 ```
 
-## Add the groupVariants object to your config and add a custom variant like you normally would
+## Add the groupVariants object to your config and add a custom variant like you normally would.
+
+I encourage you to use TailwindCSS 2.0's ability to extend variants to avoid messing up the defaults, unless what you want is to definitely remove the defaults. A list of the default variants enabled by utility can be found [here](https://tailwindcss.com/docs/hover-focus-and-other-states#default-variants-reference).
 
 ```js
 module.exports = {
   variants: {
-    margin: ['responsive', 'group-first']
+    extend: {
+      margin: ['group-first']
+    }
   },
   // Add this to the root of your config file or in your "extend" portion.
   groupVariants: {
@@ -57,7 +61,9 @@ Here, you can see that the implementation doesn't limit you to pseudo-classes. B
 ```js
 module.exports = {
   variants: {
-    height: ['responsive', 'overlay-active', 'accordion-open']
+    extend: {
+      height: ['overlay-active', 'accordion-open']
+    }
   },
   groupVariants: {
     'overlay-active': ['overlay', 'active', '.active'], // Note the custom name to avoid conflicts with existing pseudo variants like "active"
@@ -84,6 +90,28 @@ Generates the following:
 ```
 
 Here's an [example](https://codepen.io/davidwebca/pen/YzWdLqz) built with [AlpineJS](https://github.com/alpinejs/alpine).
+
+## Advanced
+
+In total, five arguments can be fed to the groupVariants attributes in your configuration. The extra 2 are less likely to be used, but provided for specific use cases. The 4th argument is a selector suffix (not to be confused with the group name suffix). This allows you to add anything to the utility name, for example opacity-100 can become opacity-100-wow... but why would you! This is moreso to add pseudo selectors. Below is an example where you would create a "not hovered" pseudo class on the opacity utility. This enables you to reduce opacity on every element that is NOT hovered. You could create a similar effect where all form elements that are not focused are smaller with transforms, or add specific styles to a group that is hovered AND the element is focused. 
+
+The 5th argument is simply the separator used to create the finished selector name (.group + dash + not-hover). Dash is the default. If you use bem notation style, you could swtich this to double underscores. The first 3 arguments are required, the last 2 are not and you can leave them undefined.
+
+```js
+module.exports = {
+  variants: {
+    extend: {
+      opacity: ['not-hover']
+    }
+  },
+  groupVariants: {
+    'not-hover': ['group', 'not-hover', ':hover', ':not(:hover)', '-'],
+  },
+  plugins: [
+    require('tailwindcss-group-variants'),
+  ]
+}
+```
 
 ## But why wouldn't you simply toggle the height class with Alpine?
 

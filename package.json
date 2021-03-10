@@ -1,6 +1,6 @@
 {
   "name": "tailwindcss-group-variants",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Tailwind CSS plugin to add group variants",
   "main": "index.js",
   "scripts": {
