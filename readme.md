@@ -113,7 +113,20 @@ module.exports = {
 }
 ```
 
-## But why wouldn't you simply toggle the height class with Alpine?
+Generates the following:
+
+```css
+.group:hover .group-not-hover\:opacity-0:not(:hover) {
+  opacity: 0;
+}
+
+.group:hover .group-not-hover\:opacity-10:not(:hover) {
+  opacity: 0.1;
+}
+/* And all the other opacity utilities */
+```
+
+## But why wouldn't you simply toggle the class with Alpine?
 
 There's a case to be made for simple examples, but sometimes, you have to toggle a class on multiple elements or multiple classes on a single element. This would result in some burdened JavaScript along with classes whose names and values can change. This method keeps things more semantic (active class is toggled in a single place) and prevents the eventual case where you would need to cleanup classes names in JavaScript files, making your views dryer and logic separated as much as possible.
 
