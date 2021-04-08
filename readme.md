@@ -91,6 +91,49 @@ Generates the following:
 
 Here's an [example](https://codepen.io/davidwebca/pen/YzWdLqz) built with [AlpineJS](https://github.com/alpinejs/alpine).
 
+## Just-in-time mode / JIT
+
+In Tailwind 2.1, just-in-time compilation was added as a separate mode and it [was announced](https://tailwindcss.com/docs/just-in-time-mode) that it will become the default mode for Tailwind 3 later this year. This plugin already supports by default the new mode, and like native variants, you don't have to enable them in the "variants" config. You __do__ have to add the plugin's config key "groupVariants" though. The only caveat I found through my testing is that the name of the variant can not be arbitrary anymore.
+
+This example __WILL NOT__ work.
+
+```js
+module.exports = {
+  groupVariants: {
+    'group-is-first': ['group', 'first', ':first-child'],
+  },
+  plugins: [
+    require('tailwindcss-group-variants'),
+  ]
+}
+```
+
+This one __WILL WORK__.
+
+```js
+module.exports = {
+  groupVariants: {
+    'group-first': ['group', 'first', ':first-child'],
+  },
+  plugins: [
+    require('tailwindcss-group-variants'),
+  ]
+}
+```
+
+So basically, from my understanding, JIT looks for keys in the code that looks similar to the variants names to generate them. In that case, "group-is-first" wouldn't be found, but "group-first" would and so the first and second argument are to be concatenated so that the class generated matches the name of the variant. I'm going to clean up the code and config syntax to generate the variants in version 1.0 that will basically remove the need to care about this. Future syntax might look like the following, just take note that this won't work right now and will be enabled later.
+
+```js
+module.exports = {
+  groupVariants: {
+    'group-first': ':first-child' // Removing the array and using a simple key value, the key would be split into group / first then re-used to generate the variants like .group:first-child .group-first:mt-8
+  },
+  plugins: [
+    require('tailwindcss-group-variants'),
+  ]
+}
+```
+
 ## Advanced
 
 In total, five arguments can be fed to the groupVariants attributes in your configuration. The extra 2 are less likely to be used, but provided for specific use cases. The 4th argument is a selector suffix (not to be confused with the group name suffix). This allows you to add anything to the utility name, for example opacity-100 can become opacity-100-wow... but why would you! This is moreso to add pseudo selectors. Below is an example where you would create a "not hovered" pseudo class on the opacity utility. This enables you to reduce opacity on every element that is NOT hovered. You could create a similar effect where all form elements that are not focused are smaller with transforms, or add specific styles to a group that is hovered AND the element is focused. 
