@@ -1,3 +1,29 @@
+:bangbang: | WARNING! This plugin is archived and will not receive further updates. 
+:---: | :---
+
+The release of Tailwind 3 makes it even more easy to create variants and the JIT engine allows us to stack them pretty easily. Here's an example of custom named groups if anyone wants to fiddle with it: https://play.tailwindcss.com/Gp4tfEXDYU?file=config
+
+```js
+const plugin = require('tailwindcss/plugin')
+
+module.exports = {
+  theme: {
+    extend: {
+      // ...
+    },
+  },
+  plugins: [
+    plugin(({addVariant}) => {
+        addVariant('custom-group-name-hover', ':merge(.custom-group-name):hover &')
+        addVariant('custom-group-name-first', ':merge(.custom-group-name):first-child &')
+        // :merge() is important to merge all variant pseudos on that selector and not the child
+        // this is inspirted by the core .group plugin https://github.com/tailwindlabs/tailwindcss/blob/master/src/corePlugins.js#L107
+    })
+  ],
+}
+```
+
+
 # Tailwind Group Variants
 
 This plugin is based on the internal code from Tailwind CSS to create group variants (namely group-hover, group-focus) and allows you to create your own
